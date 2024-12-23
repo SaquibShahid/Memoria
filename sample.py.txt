@@ -1,0 +1,64 @@
+PYTHON SAMPLE CODE
+
+import openai
+import faiss
+from sentence_transformers import SentenceTransformer
+from typing import List, Tuple
+
+# Initialize models and API keys
+openai.api_key = "your-openai-api-key"  # Replace with your OpenAI API key
+embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# FAISS index for vector search
+dimension = 384  # Dimension of the MiniLM model's embeddings
+index = faiss.IndexFlatL2(dimension)
+
+# Simulated chat history and embeddings
+chat_history = [
+    "Hey, the phone number is 1234567890.",
+    "I shared the address with Alice yesterday.",
+    "The meeting is at 3 PM tomorrow.",
+    "Can you send me the project document?"
+]
+
+# Encode chat history and add to the FAISS index
+chat_embeddings = embedding_model.encode(chat_history)
+index.add(chat_embeddings)
+
+# Function to perform semantic search
+def semantic_search(query: str, top_k: int = 3) -> List[Tuple[int, str]]:
+    query_embedding = embedding_model.encode([query])
+    distances, indices = index.search(query_embedding, top_k)
+    results = [(indices[0][i], chat_history[indices[0][i]]) for i in range(len(indices[0]))]
+    return results
+
+# Function to use OpenAI GPT-4 as fallback
+def openai_fallback(query: str) -> str:
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": query}
+            ]
+        )
+        return response['choices'][0]['message']['content']
+    except Exception as e:
+        return f"Error with OpenAI API: {e}"
+
+# Unified function for handling user queries
+def handle_query(query: str, threshold: float = 0.5) -> str:
+    # Perform semantic search
+    results = semantic_search(query, top_k=1)
+    
+    # If the top match is not relevant, use OpenAI fallback
+    top_match = results[0] if results else None
+    if top_match and top_match[0] < threshold:
+        return f"Semantic Search Result: {top_match[1]}"
+    else:
+        return f"OpenAI Fallback Result: {openai_fallback(query)}"
+
+# Test the hybrid system
+query = "Who did I share the address with?"
+response = handle_query(query)
+print(response)
