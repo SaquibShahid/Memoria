@@ -27,8 +27,8 @@
      - Search engine for chat indexing and retrieval.
 
 3. **Database:**
-   - PostgreSQL or MongoDB for chat storage.
-   - Elasticsearch or Meilisearch for indexing and search operations.
+   - MongoDB for chat storage.
+   - Elasticsearch for indexing and search operations.
 
 4. **AI Model:**
    - Pre-trained NLP model (e.g., OpenAI GPT-4 or BERT).
@@ -156,5 +156,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Contact
 For questions or suggestions, feel free to contact us:
 - Email: support@chatsearchbot.com
-- GitHub: [GitHub Repository](https://github.com/your-repo/chatbot-ai-search)
 
