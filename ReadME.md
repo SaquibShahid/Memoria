@@ -1,7 +1,7 @@
-# AI-Enhanced Chat Search Bot
+# Memoria - AI-Enhanced Chat Search Bot
 
 ## Project Overview
-**AI-Enhanced Chat Search Bot** is a chatbot platform that allows users to seamlessly sync their social media accounts and search through their chat history using natural language queries. The system leverages advanced AI models to provide context-aware and efficient results, helping users find specific information (e.g., phone numbers, addresses, or conversations) without needing to recall which conversation contained the data.
+**Memoria** is a chatbot platform that allows users to seamlessly sync their social media accounts and search through their chat history using natural language queries. The system leverages advanced AI models to provide context-aware and efficient results, helping users find specific information (e.g., phone numbers, addresses, or conversations) without needing to recall which conversation contained the data.
 
 ---
 
@@ -43,10 +43,10 @@
 ## Technology Stack
 - **Frontend:** React.js, Tailwind CSS / Bootstrap, Axios.
 - **Backend:** Node.js, Express.js.
-- **Database:** PostgreSQL or MongoDB.
-- **Search Engine:** Elasticsearch or Meilisearch.
+- **Database:** MongoDB.
+- **Search Engine:** Elasticsearch.
 - **AI Model:** OpenAI GPT API / Hugging Face BERT.
-- **Authentication:** OAuth 2.0 (Google, Facebook, etc.).
+- **Authentication:** OAuth 2.0 (Google, etc.).
 
 ---
 
@@ -55,14 +55,14 @@
 ### Prerequisites
 - Node.js (v18 or higher)
 - Docker
-- PostgreSQL or MongoDB
+- MongoDB
 - API keys for supported platforms (e.g., Telegram Bot Token, WhatsApp API credentials).
 
 ### Steps to Set Up the Project
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-repo/chatbot-ai-search.git
-   cd chatbot-ai-search
+   git clone https://github.com/SaquibShahid/Memoria.git
+   cd memoria
    ```
 
 2. **Install Dependencies:**
@@ -74,7 +74,7 @@
    Create a `.env` file with the following keys:
    ```env
    PORT=3000
-   DB_URL=mongodb://localhost:27017/chatbot
+   DB_URL=mongodb://localhost:27017/memoria
    OPENAI_API_KEY=your_openai_api_key
    TELEGRAM_BOT_TOKEN=your_telegram_bot_token
    ```
@@ -148,12 +148,12 @@ We welcome contributions to this project! To contribute:
 
 ---
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+<!-- ## License
+This project is licensed under the MIT License. See the `LICENSE` file for details. -->
 
 ---
 
-## Contact
+<!-- ## Contact
 For questions or suggestions, feel free to contact us:
-- Email: support@chatsearchbot.com
+- Email: support@chatsearchbot.com -->
 
